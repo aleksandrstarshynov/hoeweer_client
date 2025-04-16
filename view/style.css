@@ -6,17 +6,18 @@
 main {
     width: 80%;
     margin: auto;
-    background-color: red;
     display: flex;
     flex-direction: row;
     align-items: end;
     gap: 10px;
+    justify-content: center;
+    /* padding-bottom: 20px; */
 }
 
 #navDiv {
     width: 80%;
     margin: auto;
-    background-color: rgb(0, 255, 47);
+    /* background-color: rgb(0, 255, 47); */
     display: flex;
     flex-direction: row;
     align-items: end;
@@ -49,8 +50,8 @@ main {
 
 .button {
     background-color: #18015C;
-    width: 45%;   
-    height: 75px;
+    width: 40%;   
+    height: 44px;
     border-radius: 16px;
     align-content: center;
     text-align: center;
@@ -59,4 +60,19 @@ main {
 
 a{
     color: white;
+}
+
+#cityInput {
+    padding: 8px;
+    height: 26px;
+    border: 1px solid #1d0146;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 200px;
+}
+
+#content {
+    height: 80vh;
+    /* background-color: red; */
+
 }

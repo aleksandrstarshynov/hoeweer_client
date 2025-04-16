@@ -1,0 +1,62 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
+}
+
+#navDiv {
+    width: 80%;
+    margin: auto;
+    background-color: rgb(0, 255, 47);
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
+    justify-content: center
+}
+
+
+#logo {
+    background-color: black;
+    color: white;
+    width: 200px;   
+    height: 100px;
+    border-radius: 16px;
+    align-content: center;
+    text-align: center;
+    font-size: larger;
+}
+
+#title {
+    background-color: rgb(53, 53, 53);
+    color: white;
+    width: 200px;
+    height: 70px;
+    border-radius: 16px;
+    align-content: center;
+    text-align: center;
+    font-size: larger;
+}
+
+.button {
+    background-color: #18015C;
+    width: 45%;   
+    height: 75px;
+    border-radius: 16px;
+    align-content: center;
+    text-align: center;
+    font-size: larger;
+}
+
+a{
+    color: white;
+}

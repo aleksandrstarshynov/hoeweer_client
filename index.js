@@ -1,7 +1,16 @@
+
+
+let currentCity = ''; 
+
 // function to creat Index Page
 function renderIndexPage() {
-    document.body.innerHTML = '';
-    // document.body.style.backgroundImage = 'url("your-image-path.jpg")';
+    document.body.innerHTML = ''; // Clear the page content
+
+    currentCity = ''; 
+    document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+    document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
+    document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
+    document.body.style.backgroundPosition = 'center'; // Optional: center the image
 
     const main = document.createElement('main');
     // main.textContent = 'Index page';
@@ -11,13 +20,21 @@ const logo = document.createElement('div');
 logo.textContent = 'Weather App NL';
 logo.id = 'logo';
 
-
+const contentDiv = document.createElement('div');
+contentDiv.id = 'content';
 
 
 
 // Navigation bar
 const navDiv = document.createElement('div');
 navDiv.id = 'navDiv';
+// input field
+const input = document.createElement('input');
+input.type = 'text';
+input.placeholder = 'Enter city name';
+input.id = 'cityInput';
+
+//button
 const findButton = document.createElement('div');
 findButton.classList.add('button'); 
 const link = document.createElement('a');
@@ -25,13 +42,17 @@ link.textContent = 'Find';
 link.href = '#';
 link.addEventListener('click', (event) => {
     event.preventDefault();
+    const cityName = document.getElementById('cityInput').value;
+    console.log(cityName); 
     renderResultPage();
 });
 
 //nesting the DOM structure
+document.body.appendChild(contentDiv);
 document.body.appendChild(main);
 main.appendChild(logo);
 document.body.appendChild(navDiv);
+navDiv.appendChild(input); 
 navDiv.appendChild(findButton);
 findButton.appendChild(link);
 }
@@ -45,13 +66,24 @@ findButton.appendChild(link);
 function renderResultPage() {
 document.body.innerHTML = '';
 
+document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
+document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
+document.body.style.backgroundPosition = 'center'; // Optional: center the image
+
+
 const main = document.createElement('main');
 // main.textContent = 'Result Page';
+
+
 
 // header
 const logo = document.createElement('div');
 logo.textContent = 'Weather App NL';
 logo.id = 'logo';
+
+const contentDiv = document.createElement('div');
+contentDiv.id = 'content';
 
 // Navigation bar
 // Create link to Page 2
@@ -80,6 +112,7 @@ link2.addEventListener('click', (event) => {
 
 document.body.appendChild(main);
 main.appendChild(logo);
+document.body.appendChild(contentDiv);
 document.body.appendChild(navDiv);
 navDiv.appendChild(newSeachButton);
 newSeachButton.appendChild(link);
@@ -96,6 +129,12 @@ extraPageButton.appendChild(link2);
 function renderExtraInfoPage() {
 document.body.innerHTML = '';
 
+document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
+document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
+document.body.style.backgroundPosition = 'center'; // Optional: center the image
+
+
 const main = document.createElement('main');
 // main.textContent = 'Extra Info';
 
@@ -106,6 +145,9 @@ logo.id = 'logo';
 const title = document.createElement('div');
 title.textContent = 'Extra Info';
 title.id = 'title';
+
+const contentDiv = document.createElement('div');
+contentDiv.id = 'content';
 
 // Navigation bar
 // Create link to the Index Page
@@ -134,6 +176,7 @@ renderIndexPage();
 document.body.appendChild(main);
 main.appendChild(logo);
 main.appendChild(title);
+document.body.appendChild(contentDiv);
 document.body.appendChild(navDiv);
 navDiv.appendChild(backButton);
 backButton.appendChild(link);

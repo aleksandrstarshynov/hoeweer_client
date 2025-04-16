@@ -2,9 +2,11 @@
 function renderIndexPage() {
     document.body.innerHTML = '';
     const main = document.createElement('div');
-    main.textContent = 'Test Text Here';
+    main.textContent = 'Index page';
 
-
+// header
+const logo = document.createElement('div');
+logo.textContent = 'LOGO';
 
 
 
@@ -23,6 +25,7 @@ link.addEventListener('click', (event) => {
 
 //nesting the DOM structure
 document.body.appendChild(main);
+main.appendChild(logo);
 document.body.appendChild(navDiv);
 navDiv.appendChild(link);
 }
@@ -37,7 +40,12 @@ function renderResultPage() {
 document.body.innerHTML = '';
 
 const main = document.createElement('main');
-main.textContent = 'Test Text Here';
+main.textContent = 'Result Page';
+
+// header
+const logo = document.createElement('div');
+logo.textContent = 'LOGO';
+
 
 // Create link to Page 2
 const navDiv = document.createElement('div');
@@ -61,7 +69,8 @@ link2.addEventListener('click', (event) => {
   renderExtraInfoPage();
 });
 
-
+document.body.appendChild(main);
+main.appendChild(logo);
 document.body.appendChild(navDiv);
 navDiv.appendChild(link);
 document.body.appendChild(navDiv2);
@@ -78,7 +87,13 @@ function renderExtraInfoPage() {
 document.body.innerHTML = '';
 
 const main = document.createElement('main');
-main.textContent = 'Test Text Here';
+main.textContent = 'Extra Info';
+
+// header
+const logo = document.createElement('div');
+logo.textContent = 'LOGO';
+
+
 
 // Create link to the Index Page
 const navDiv = document.createElement('div');
@@ -102,6 +117,7 @@ renderIndexPage();
 });
 
 document.body.appendChild(main);
+main.appendChild(logo);
 document.body.appendChild(navDiv);
 navDiv.appendChild(link);
 document.body.appendChild(navDiv2);

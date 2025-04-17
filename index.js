@@ -1,10 +1,10 @@
+import { backgroundImageUrl} from "./controller/getImageFetch.js";
 
-
-let currentCity = ''; 
+export let currentCity;  
 
 // function to creat Index Page
 function renderIndexPage() {
-    document.body.innerHTML = ''; // Clear the page content
+    document.body.innerHTML = ''; 
 
     currentCity = ''; 
     document.body.style.backgroundImage = 'url("src/default-image.jpg")';
@@ -66,7 +66,7 @@ findButton.appendChild(link);
 function renderResultPage() {
 document.body.innerHTML = '';
 
-document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
 document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
 document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
 document.body.style.backgroundPosition = 'center'; // Optional: center the image
@@ -129,7 +129,7 @@ extraPageButton.appendChild(link2);
 function renderExtraInfoPage() {
 document.body.innerHTML = '';
 
-document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
 document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
 document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
 document.body.style.backgroundPosition = 'center'; // Optional: center the image

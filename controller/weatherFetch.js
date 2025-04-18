@@ -6,8 +6,8 @@ export let weather = null;
 export async function fetchCurrentWeather(latitude, longitude) {
   // const { latitude, longitude } = cityNameFetch(currentCity);
 
-  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m,precipitation,rain,snowfall,cloudcover,windspeed_10m,windgusts_10m,uv_index,surface_pressure,evapotranspiration,soil_temperature_0cm,soil_moisture_0_1cm,direct_radiation&timezone=Europe/Amsterdam`;
-
+   const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m,precipitation,rain,snowfall,cloudcover,windspeed_10m,windgusts_10m,uv_index,surface_pressure,evapotranspiration,soil_temperature_0cm,soil_moisture_0_1cm,direct_radiation&timezone=Europe/Amsterdam`;
+   // const apiUrl = `https://`;   // FOR TESTING PERPOUSE
   try {
     const response = await fetch(apiUrl);
 
@@ -42,6 +42,28 @@ export async function fetchCurrentWeather(latitude, longitude) {
 
   } catch (error) {
     console.error('Error fetching weather data:', error);
+    
+          // Remove existing error message if it exists
+  const existingError = document.getElementById('error-message');
+  if (existingError) {
+    existingError.remove();
+  }
+
+      // Create an error message element
+      const errorMessage = document.createElement('div');
+      errorMessage.id = "error-message";
+      errorMessage.textContent = 'Sorry, something went wrong. Please try again later.';
+      const contentDiv = document.getElementById('content-transparent');
+      contentDiv.appendChild(errorMessage);
+
+
+
+
+
+
+
+
+
     return null;
   }
 }

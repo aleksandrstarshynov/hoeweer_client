@@ -97,3 +97,15 @@ a{
     background-color: rgba(138, 142, 255, 0);
     padding: 50px;
 }
+
+#error-message {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-size: large;
+    width: 30%;
+    height: 15vh;
+    margin: auto;
+    text-align: center;
+    padding: 200px;
+    border-radius: 16px;
+} 

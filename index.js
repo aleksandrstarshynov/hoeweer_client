@@ -47,34 +47,46 @@ findButton.classList.add('button');
 const link = document.createElement('a');
 link.textContent = 'Find';
 link.href = '#';
-link.addEventListener('click', (event) => {
-    event.preventDefault();
-    const currentCity = document.getElementById('cityInput').value;
-    console.log(currentCity); 
+link.addEventListener('click', async (event) => {
+  event.preventDefault();  // Prevents link from reloading the page
 
+  const currentCity = document.getElementById('cityInput').value;
+  console.log(currentCity);
 
-    // run all fetches here
-    // cityNameFetch(currentCity);
-    const { latitude, longitude } = cityNameFetch(currentCity);
+  try {
+    // 1. Wait for city coordinates
+    const { latitude, longitude } = await cityNameFetch(currentCity);
+
     if (latitude && longitude) {
-      fetchCurrentWeather(latitude, longitude)
-        .then(data => {
-          if (data) {
-            weatherData = data;  // Store the data in the global variable
-            renderResultPage(weatherData);  // Pass the data to the result page
-          } else {
-            console.warn('No weather data found!');
-          }
-        })
-        .catch(error => console.error('Error fetching weather data:', error));
-    } else {
-      console.warn("Coordinates not set yet!");
-    }
+      // 2. Wait for weather data
+      const data = await fetchCurrentWeather(latitude, longitude);
 
-    setRandomBackgroundImage(currentCity, weather);
-    //finish
-    renderResultPage();
+      if (data) {
+        weatherData = data;  // Save it for later use
+
+        // 3. Wait for background image to load
+        await setRandomBackgroundImage(currentCity, weather);
+
+        // 4. Finally render the result page
+        renderResultPage(weatherData);
+      } else {
+        // Weather API returned nothing
+        console.warn('No weather data found!');
+        showErrorMessage("No weather data found.");
+      }
+    } else {
+      // No coordinates returned
+      console.warn("Coordinates not set yet!");
+      showErrorMessage("City not found in the Netherlands.");
+    }
+  } catch (error) {
+    // If any fetch fails (network, etc.)
+    console.error('Error during fetching:', error);
+    showErrorMessage("An error occurred. Please try again.");
+  }
 });
+
+
 
 //nesting the DOM structure
 document.body.appendChild(contentDiv);
@@ -305,6 +317,47 @@ backButton.appendChild(link);
 navDiv.appendChild(newSearchButton);
 newSearchButton.appendChild(link2);
 }
+
+
+
+function showErrorMessage(message) {
+  const oldError = document.getElementById("error-message");
+  if (oldError) oldError.remove();
+
+  const errorDiv = document.createElement("div");
+  errorDiv.id = "error-message";
+  errorDiv.textContent = message;
+  const contentDiv = document.getElementById('content-transparent');
+  if (contentDiv) {
+    contentDiv.appendChild(errorDiv);
+  }
+}
+
+function displayCityAddress(cityAddress) {
+  // Create or clear the previous address display
+  const existingAddressDiv = document.getElementById('city-address');
+  if (existingAddressDiv) {
+    existingAddressDiv.remove();
+  }
+
+  const addressDiv = document.createElement('div');
+  addressDiv.id = 'city-address';
+
+  // Concatenate the city, state, and country into a single line of text
+  const addressText = `${cityAddress.city}, ${cityAddress.state}, ${cityAddress.country} (Country Code: ${cityAddress.countryCode})`;
+
+  // Create a single paragraph element for the full address
+  const addressElement = document.createElement('p');
+  addressElement.textContent = addressText;
+  addressDiv.appendChild(addressElement);
+
+  // Append the addressDiv to the body or any specific container element
+  const contentDiv = document.getElementById('content-transparent'); // Assuming this is your main container
+  if (contentDiv) {
+    contentDiv.appendChild(addressDiv);
+  }
+}
+
 
 // Initialize with Page 1
 renderIndexPage();

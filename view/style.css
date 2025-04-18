@@ -31,6 +31,7 @@ main {
     flex-direction: row;
     align-items: end;
     padding: 20px;
+    gap: 20px;
 }
 
 #logo {
@@ -81,7 +82,7 @@ a{
 
 #content {
     height: 60vh;
-    width: 70%;
+    width: 50%;
     margin: auto;
     background-color: rgba(138, 142, 255, 0.8);
     font-size: 36px;
@@ -89,4 +90,10 @@ a{
     padding: 50px;
     text-align: center;
     border-radius: 16px;
+}
+
+#content-transparent {
+    height: 60vh;
+    background-color: rgba(138, 142, 255, 0);
+    padding: 50px;
 }

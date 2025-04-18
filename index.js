@@ -28,7 +28,7 @@ logo.textContent = 'Weather App NL';
 logo.id = 'logo';
 
 const contentDiv = document.createElement('div');
-contentDiv.id = 'content';
+contentDiv.id = 'content-transparent';
 
 
 
@@ -299,7 +299,7 @@ main.appendChild(header)
 header.appendChild(logo);
 header.appendChild(title);
 main.appendChild(contentDiv); 
-document.body.appendChild(navDiv);
+main.appendChild(navDiv);
 navDiv.appendChild(backButton);
 backButton.appendChild(link);
 navDiv.appendChild(newSearchButton);

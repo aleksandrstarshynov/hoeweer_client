@@ -5,7 +5,7 @@ let ACCESS_KEY = "s-QDeN8Ing-6mmyOjkJjI31msk5xlVf6tJKhSEpOfJc";
 export let backgroundImageUrl = '';
 
 
-function setRandomBackgroundImage(currentCity, weather) {
+export function setRandomBackgroundImage(currentCity, weather) {
     fetch(`https://api.unsplash.com/search/photos?query=${currentCity}+${weather}&client_id=${ACCESS_KEY}`)
         .then(res => res.json())
         .then(data => {

@@ -1,4 +1,8 @@
 import { backgroundImageUrl} from "./controller/getImageFetch.js";
+import { setRandomBackgroundImage } from "./controller/getImageFetch.js";
+import { fetchCurrentWeather } from "./controller/weatherFetch.js";
+import { weather } from "./controller/weatherFetch.js";
+import { cityNameFetch } from "./controller/cityNameFetch.js";
 
 export let currentCity;  
 
@@ -42,8 +46,22 @@ link.textContent = 'Find';
 link.href = '#';
 link.addEventListener('click', (event) => {
     event.preventDefault();
-    const cityName = document.getElementById('cityInput').value;
-    console.log(cityName); 
+    const currentCity = document.getElementById('cityInput').value;
+    console.log(currentCity); 
+
+
+    // run all fetches here
+    // cityNameFetch(currentCity);
+    const { latitude, longitude } = cityNameFetch(currentCity);
+
+    if (latitude && longitude) {
+      fetchCurrentWeather(latitude, longitude);
+    } else {
+      console.warn("Coordinates not set yet!");
+    };
+
+    setRandomBackgroundImage(currentCity, weather);
+    //finish
     renderResultPage();
 });
 

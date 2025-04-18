@@ -30,6 +30,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: end;
+    padding: 20px;
 }
 
 #logo {
@@ -79,7 +80,7 @@ a{
 }
 
 #content {
-    height: 70vh;
+    height: 60vh;
     width: 70%;
     margin: auto;
     background-color: rgba(138, 142, 255, 0.8);
@@ -87,4 +88,5 @@ a{
     color: white;
     padding: 50px;
     text-align: center;
+    border-radius: 16px;
 }

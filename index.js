@@ -21,6 +21,8 @@ function renderIndexPage() {
     // main.textContent = 'Index page';
 
 // header
+const header = document.createElement('div');
+header.id = 'header';
 const logo = document.createElement('div');
 logo.textContent = 'Weather App NL';
 logo.id = 'logo';
@@ -77,7 +79,8 @@ link.addEventListener('click', (event) => {
 //nesting the DOM structure
 document.body.appendChild(contentDiv);
 document.body.appendChild(main);
-main.appendChild(logo);
+main.appendChild(header)
+header.appendChild(logo);
 document.body.appendChild(navDiv);
 navDiv.appendChild(input); 
 navDiv.appendChild(findButton);
@@ -106,6 +109,8 @@ function renderResultPage(weatherData) {
     const main = document.createElement('main');
   
     // Header
+    const header = document.createElement('div');
+    header.id = 'header';
     const logo = document.createElement('div');
     logo.textContent = 'Weather App NL';
     logo.id = 'logo';
@@ -186,7 +191,8 @@ function renderResultPage(weatherData) {
   
     // Append the main content to the body
     document.body.appendChild(main);
-    main.appendChild(logo);
+    main.appendChild(header)
+    header.appendChild(logo);
     main.appendChild(contentDiv); 
     main.appendChild(navDiv);
 }

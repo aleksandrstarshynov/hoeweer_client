@@ -1,24 +1,50 @@
-// export let latitude = 52.37;
-// export let longitude = 4.89;
 
 import { currentCity } from "../index.js";
-// console.log("currentCity in cityNameFetch:", currentCity); 
 
 
-// let latitude = null;
-// let longitude = null;
-
-// export function setCoordinates() {
-//   latitude = 52.37;
-//   longitude = 4.89;
-// }
-
-export function cityNameFetch(currentCity) {
-    console.log("cityNameFetch");
-    // Ensure we're using the variable correctly inside the function
-    if (currentCity === "Amsterdam") {
-      return { latitude: 52.3676, longitude: 4.9041 };
-    }
+// old code without fetch
+// export function cityNameFetch(currentCity) {
+//     console.log("cityNameFetch");
+//     if (currentCity === "Amsterdam") {
+//       return { latitude: 52.3676, longitude: 4.9041 };
+//     }
   
-    return { latitude: 0, longitude: 0 };  // Fallback for other cities
+//     return { latitude: 0, longitude: 0 };  
+//   }
+
+  // new code with fewtch
+  export async function cityNameFetch(currentCity) {
+    const encodedCityName = encodeURIComponent(currentCity);
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodedCityName}&countrycodes=nl&limit=1`;
+  
+    try {
+      const response = await fetch(url, {
+        headers: {
+          'Accept': 'application/json',
+          // Optional but nice: include user agent to be respectful to their API
+          'User-Agent': 'YourWeatherApp/1.0 (your-email@example.com)'
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+  
+      if (data.length === 0) {
+        console.warn("No results found for this city.");
+
+        // ToDo add div with the error message  
+        return { latitude: null, longitude: null };
+      }
+  
+      const { lat, lon } = data[0];
+      return { latitude: parseFloat(lat), longitude: parseFloat(lon) };
+  
+    } catch (error) {
+      console.error('Error fetching city coordinates:', error);
+      return { latitude: null, longitude: null };
+    }
   }
+  

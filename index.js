@@ -1,10 +1,14 @@
+import { backgroundImageUrl} from "./controller/getImageFetch.js";
+import { setRandomBackgroundImage } from "./controller/getImageFetch.js";
+import { fetchCurrentWeather } from "./controller/weatherFetch.js";
+import { weather } from "./controller/weatherFetch.js";
+import { cityNameFetch } from "./controller/cityNameFetch.js";
 
-
-let currentCity = ''; 
+export let currentCity;  
 
 // function to creat Index Page
 function renderIndexPage() {
-    document.body.innerHTML = ''; // Clear the page content
+    document.body.innerHTML = ''; 
 
     currentCity = ''; 
     document.body.style.backgroundImage = 'url("src/default-image.jpg")';
@@ -42,8 +46,22 @@ link.textContent = 'Find';
 link.href = '#';
 link.addEventListener('click', (event) => {
     event.preventDefault();
-    const cityName = document.getElementById('cityInput').value;
-    console.log(cityName); 
+    const currentCity = document.getElementById('cityInput').value;
+    console.log(currentCity); 
+
+
+    // run all fetches here
+    // cityNameFetch(currentCity);
+    const { latitude, longitude } = cityNameFetch(currentCity);
+
+    if (latitude && longitude) {
+      fetchCurrentWeather(latitude, longitude);
+    } else {
+      console.warn("Coordinates not set yet!");
+    };
+
+    setRandomBackgroundImage(currentCity, weather);
+    //finish
     renderResultPage();
 });
 
@@ -66,7 +84,7 @@ findButton.appendChild(link);
 function renderResultPage() {
 document.body.innerHTML = '';
 
-document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
 document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
 document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
 document.body.style.backgroundPosition = 'center'; // Optional: center the image
@@ -129,7 +147,7 @@ extraPageButton.appendChild(link2);
 function renderExtraInfoPage() {
 document.body.innerHTML = '';
 
-document.body.style.backgroundImage = 'url("src/default-image.jpg")';
+document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
 document.body.style.backgroundSize = 'cover'; // Optional: make it fill the screen
 document.body.style.backgroundRepeat = 'no-repeat'; // Optional: prevent tiling
 document.body.style.backgroundPosition = 'center'; // Optional: center the image

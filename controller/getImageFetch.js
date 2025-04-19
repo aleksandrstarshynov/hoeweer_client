@@ -1,5 +1,5 @@
 import { weather } from "./weatherFetch.js";
-import { currentCity} from "../index.js";
+import { currentCity } from "../view/renderIndexPage.js";
 
 let ACCESS_KEY = "s-QDeN8Ing-6mmyOjkJjI31msk5xlVf6tJKhSEpOfJc";
 export let backgroundImageUrl = '';

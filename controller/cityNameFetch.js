@@ -22,11 +22,9 @@ export async function cityNameFetch(currentCity) {
       return { latitude: null, longitude: null, cityInfo: null };
     }
 
-    // Extract cityInfo correctly
     const { lat, lon, display_name } = data[0];
     console.log("cityInfo:", display_name);
 
-    // Return latitude, longitude, and cityInfo properly
     return { latitude: parseFloat(lat), longitude: parseFloat(lon), cityInfo: display_name };
 
   } catch (error) {

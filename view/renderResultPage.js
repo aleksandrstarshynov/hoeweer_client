@@ -60,7 +60,7 @@ export function renderResultPage(weatherData, cityInfo) {
   const link = document.createElement('a');
   link.textContent = 'New Search';
   link.href = '#';
-  link.addEventListener('click', (event) => {
+  newSearchButton.addEventListener('click', (event) => {
     event.preventDefault();
     renderIndexPage();
   });
@@ -70,7 +70,7 @@ export function renderResultPage(weatherData, cityInfo) {
   const link2 = document.createElement('a');
   link2.textContent = 'More Info';
   link2.href = '#';
-  link2.addEventListener('click', (event) => {
+  extraPageButton.addEventListener('click', (event) => {
     event.preventDefault();
     renderExtraInfoPage(weatherData, cityInfo);
   });

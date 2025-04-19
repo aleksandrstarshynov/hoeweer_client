@@ -142,6 +142,7 @@ function renderResultPage(wData, cInfo) {
   // City info
   const cityInfoDiv = document.createElement('div');
   cityInfoDiv.textContent = `City: ${cityInfo}`;
+  cityInfoDiv.id = 'cityInfo'; 
   contentDiv.appendChild(cityInfoDiv);
 
   // Create the weather container and append weather details
@@ -189,7 +190,7 @@ function renderResultPage(wData, cInfo) {
   link2.href = '#';
   link2.addEventListener('click', (event) => {
     event.preventDefault();
-    renderExtraInfoPage();  // Make sure this function is defined
+    renderExtraInfoPage();  
   });
 
   // Append the buttons to navDiv
@@ -234,6 +235,12 @@ function renderExtraInfoPage() {
   // Create contentDiv inside this function to ensure it's available
   const contentDiv = document.createElement('div');
   contentDiv.id = 'content';
+
+  // City info (show city name on top)
+  const cityInfoDiv = document.createElement('div');
+  cityInfoDiv.textContent = `City: ${cityInfo}`;
+  cityInfoDiv.id = 'cityInfo'; 
+  contentDiv.appendChild(cityInfoDiv);
 
   // Create the weather container and append weather details
   const weatherContainer = document.createElement('div');

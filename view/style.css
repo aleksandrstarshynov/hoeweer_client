@@ -109,3 +109,9 @@ a{
     padding: 200px;
     border-radius: 16px;
 } 
+
+#cityInfo {
+    color: black;
+    font-size: 36px;
+    padding-bottom: 20px;
+}

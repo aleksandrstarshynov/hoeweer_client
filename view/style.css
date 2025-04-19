@@ -63,6 +63,7 @@ main {
     align-content: center;
     text-align: center;
     font-size: larger;
+    cursor: pointer;
 }
 
 a{

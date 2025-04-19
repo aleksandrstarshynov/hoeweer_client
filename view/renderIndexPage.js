@@ -42,7 +42,7 @@ export function renderIndexPage() {
   link.textContent = 'Find';
   link.href = '#';
 
-  link.addEventListener('click', async (event) => {
+  findButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
     const cityInput = document.getElementById('cityInput').value;

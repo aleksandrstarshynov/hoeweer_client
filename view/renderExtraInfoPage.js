@@ -64,7 +64,7 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   const backLink = document.createElement('a');
   backLink.textContent = 'Back';
   backLink.href = '#';
-  backLink.addEventListener('click', (event) => {
+  backButton.addEventListener('click', (event) => {
     event.preventDefault();
     renderResultPage(weatherData, cityInfo);
   });
@@ -74,7 +74,7 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   const newSearchLink = document.createElement('a');
   newSearchLink.textContent = 'New Search';
   newSearchLink.href = '#';
-  newSearchLink.addEventListener('click', (event) => {
+  newSearchButton.addEventListener('click', (event) => {
     event.preventDefault();
     renderIndexPage();
   });

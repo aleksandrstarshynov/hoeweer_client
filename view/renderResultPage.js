@@ -1,6 +1,7 @@
 import { backgroundImageUrl } from "../controller/getImageFetch.js";
 import { renderIndexPage } from "./renderIndexPage.js";
 import { renderExtraInfoPage } from "./renderExtraInfoPage.js";
+import { renderChart } from '../controller/chart.js';
 
 export function renderResultPage(weatherData, cityInfo) {
   if (!weatherData || !cityInfo) {
@@ -34,23 +35,33 @@ export function renderResultPage(weatherData, cityInfo) {
   const weatherContainer = document.createElement('div');
   weatherContainer.id = 'weatherContainer';
 
-  const timeElement = document.createElement("p");
-  timeElement.textContent = `Time: ${weatherData.time}`;
-  weatherContainer.appendChild(timeElement);
+  const entries = [
+    { label: 'Time', value: weatherData.time },
+    { label: 'Temperature', value: `${weatherData.temperature}°C` },
+    { label: 'Feels Like', value: `${weatherData.feelsLike}°C` },
+    { label: 'Humidity', value: `${weatherData.humidity}%` },
+    { label: 'Rain', value: `${weatherData.rain}mm` },
+    { label: 'Wind Speed', value: `${weatherData.windspeed} km/h` },
+    { label: 'UV Index', value: weatherData.uvIndex },
+    { label: 'Surface Pressure', value: `${weatherData.surfacePressure} hPa` }
+  ];
 
-  const temperatureElement = document.createElement("p");
-  temperatureElement.textContent = `Temperature: ${weatherData.temperature}°C`;
-  weatherContainer.appendChild(temperatureElement);
-
-  const feelsLikeElement = document.createElement("p");
-  feelsLikeElement.textContent = `Feels Like: ${weatherData.feelsLike}°C`;
-  weatherContainer.appendChild(feelsLikeElement);
-
-  const rainElement = document.createElement("p");
-  rainElement.textContent = `Rain: ${weatherData.rain}mm`;
-  weatherContainer.appendChild(rainElement);
+  for (const { label, value } of entries) {
+    const element = document.createElement("p");
+    element.textContent = `${label}: ${value}`;
+    weatherContainer.appendChild(element);
+  }
 
   contentDiv.appendChild(weatherContainer);
+
+  const chartDiv = document.createElement('div');
+chartDiv.id = 'chartDiv';
+
+const canvas = document.createElement('canvas');
+canvas.id = 'myChart';
+chartDiv.appendChild(canvas);
+
+contentDiv.appendChild(chartDiv);
 
   const navDiv = document.createElement('div');
   navDiv.id = 'navDiv';
@@ -84,5 +95,8 @@ export function renderResultPage(weatherData, cityInfo) {
   main.appendChild(header);
   header.appendChild(logo);
   main.appendChild(contentDiv);
+  main.appendChild(navDiv);
+
+renderChart();
   main.appendChild(navDiv);
 }

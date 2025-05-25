@@ -28,6 +28,22 @@ export function renderIndexPage() {
   const contentDiv = document.createElement('div');
   contentDiv.id = 'content-transparent';
 
+  // Блок с описанием проекта
+const introduction = document.createElement('div');
+introduction.id = 'introduction';
+introduction.textContent = "It is so easy to find the weather. Tens of applications provide us with forecasts. But is it possible to find the correct one? Especially in the Netherlands, where knowing what to expect makes great sense. With this project, I’ve found a way to know the expected temperature. Yes, the first version works only with degrees, not the rain. I hope that when I have free time and enough energy, I will finish the functionality for rain prediction.";
+
+// Блок с информацией обо мне
+const description = document.createElement('div');
+description.id = 'about';
+description.innerHTML = `My name is Oleksandr Starshynov, and I am a full-stack developer with JavaScript as my second native language. Nice to meet you here. More information about me you can find here: 
+  <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>, 
+  <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>, 
+  <a href="mailto:YOUR_EMAIL@example.com" target="_blank">Email</a>.`;
+
+
+
+
   const navDiv = document.createElement('div');
   navDiv.id = 'navDiv';
 
@@ -72,10 +88,13 @@ export function renderIndexPage() {
     }
   });
 
-  document.body.appendChild(contentDiv);
+ 
   document.body.appendChild(main);
   main.appendChild(header);
   header.appendChild(logo);
+  document.body.appendChild(contentDiv);
+  contentDiv.appendChild(introduction);
+  contentDiv.appendChild(description);
   document.body.appendChild(navDiv);
   navDiv.appendChild(input);
   navDiv.appendChild(findButton);

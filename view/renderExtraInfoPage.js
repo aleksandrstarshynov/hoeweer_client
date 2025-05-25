@@ -34,27 +34,15 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   cityInfoDiv.id = 'cityInfo';
   contentDiv.appendChild(cityInfoDiv);
 
-  const weatherContainer = document.createElement('div');
-  weatherContainer.id = 'weatherContainer';
+  // const weatherContainer = document.createElement('div');
+  // weatherContainer.id = 'weatherContainer';
 
-  const entries = [
-    { label: 'Time', value: weatherData.time },
-    { label: 'Temperature', value: `${weatherData.temperature}°C` },
-    { label: 'Feels Like', value: `${weatherData.feelsLike}°C` },
-    { label: 'Humidity', value: `${weatherData.humidity}%` },
-    { label: 'Rain', value: `${weatherData.rain}mm` },
-    { label: 'Wind Speed', value: `${weatherData.windspeed} km/h` },
-    { label: 'UV Index', value: weatherData.uvIndex },
-    { label: 'Surface Pressure', value: `${weatherData.surfacePressure} hPa` }
-  ];
+  const math = document.createElement('div');
+  math.id = 'navDiv';
+  math.textContent = 'MATH';
 
-  for (const { label, value } of entries) {
-    const element = document.createElement("p");
-    element.textContent = `${label}: ${value}`;
-    weatherContainer.appendChild(element);
-  }
-
-  contentDiv.appendChild(weatherContainer);
+  // contentDiv.appendChild(weatherContainer);
+  contentDiv.appendChild(math);
 
   const navDiv = document.createElement('div');
   navDiv.id = 'navDiv';

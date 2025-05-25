@@ -81,10 +81,10 @@ a{
 
 #content {
     height: 60vh;
-    width: 50%;
+    width: 70%;
     margin: auto;
-    background-color: rgba(138, 142, 255, 0.8);
-    font-size: 36px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
     color: white;
     padding: 50px;
     text-align: center;
@@ -110,10 +110,48 @@ a{
 } 
 
 #cityInfo {
-    color: black;
-    font-size: 36px;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
     padding-bottom: 20px;
 }
+
+#introduction{
+    width:50%;
+    margin: auto;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#about{
+width:50%;
+margin: auto;
+margin-top: 30px;
+border-radius: 16px;
+background-color: rgba(0, 0, 0, 0.7);
+padding-top: 50px;
+padding-bottom: 20px;
+padding-left: 40px;
+padding-right: 40px;
+font-size: 20px;
+color: #fff;
+}
+
+#chartDiv {
+    width: 100%;
+    max-height: 400px;
+    /* max-width: 800px; */
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+
 
 @media (max-width: 768px) {
     main,
@@ -149,3 +187,4 @@ a{
         gap: 20px; 
     }
 }
+

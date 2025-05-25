@@ -20,22 +20,22 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   const header = document.createElement('div');
   header.id = 'header';
   const logo = document.createElement('div');
-  logo.textContent = 'Weather App NL';
+  logo.textContent = 'HoeWeer NL';
   logo.id = 'logo';
   const title = document.createElement('div');
   title.textContent = 'Extra Info';
   title.id = 'title';
 
   const contentDiv = document.createElement('div');
-  contentDiv.id = 'content';
+  contentDiv.id = 'content-horizontal';
 
   const cityInfoDiv = document.createElement('div');
   cityInfoDiv.textContent = `City: ${cityInfo}`;
-  cityInfoDiv.id = 'cityInfo';
+  cityInfoDiv.id = 'description';
   contentDiv.appendChild(cityInfoDiv);
 
   const weatherContainer = document.createElement('div');
-  weatherContainer.id = 'weatherContainer';
+  weatherContainer.id = 'description';
 
   const entries = [
     { label: 'Time', value: weatherData.time },
@@ -60,9 +60,9 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   navDiv.id = 'navDiv';
 
   const backButton = document.createElement('div');
-  backButton.classList.add('button');
+  backButton.classList.add('button', 'second-button');
   const backLink = document.createElement('a');
-  backLink.textContent = 'Back';
+  backLink.textContent = 'Back to the results';
   backLink.href = '#';
   backButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -79,15 +79,14 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
     renderIndexPage();
   });
 
-  navDiv.appendChild(backButton);
-  backButton.appendChild(backLink);
-  navDiv.appendChild(newSearchButton);
-  newSearchButton.appendChild(newSearchLink);
-
   document.body.appendChild(main);
   main.appendChild(header);
   header.appendChild(logo);
   header.appendChild(title);
   main.appendChild(contentDiv);
   main.appendChild(navDiv);
+  navDiv.appendChild(newSearchButton);
+  newSearchButton.appendChild(newSearchLink);
+  document.body.appendChild(backButton);
+  backButton.appendChild(backLink);
 }

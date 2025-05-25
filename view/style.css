@@ -16,6 +16,7 @@ main {
 #navDiv {
     width: 80%;
     margin: auto;
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: end;
@@ -34,7 +35,7 @@ main {
 
 #logo {
     margin: auto;
-    background-color: black;
+    background-color: #3e018d;
     color: white;
     width: 200px;   
     height: 100px;
@@ -56,7 +57,21 @@ main {
 }
 
 .button {
-    background-color: #18015C;
+    background-color: #3e018d;
+    width: 40%;   
+    height: 44px;
+    border-radius: 16px;
+    align-content: center;
+    text-align: center;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.second-button {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #000000;
     width: 40%;   
     height: 44px;
     border-radius: 16px;
@@ -79,22 +94,65 @@ a{
     width: 200px;
 }
 
-#content {
-    height: 60vh;
-    width: 50%;
+#content-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* height: 50vh; */
+    width: 80%;
     margin: auto;
-    background-color: rgba(138, 142, 255, 0.8);
-    font-size: 36px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    font-size: 20px;
     color: white;
     padding: 50px;
-    text-align: center;
+    padding-top: 10px;
+
+    /* text-align: center; */
     border-radius: 16px;
 }
 
-#content-transparent {
-    height: 60vh;
-    background-color: rgba(138, 142, 255, 0);
+#content-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* height: 50vh; */
+    width: 80%;
+    margin: auto;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    font-size: 20px;
+    color: white;
     padding: 50px;
+
+    /* text-align: center; */
+    border-radius: 16px;
+}
+
+#description {
+    /* height: 50vh; */
+    width: 48%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    /* text-align: center; */
+    border-radius: 16px;
+}
+
+#content-vertical #description {
+    width: 80%;
+    margin: auto;
+}
+
+#chart {
+    margin: auto;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 16px;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    margin-top: -50px;
 }
 
 #error-message {

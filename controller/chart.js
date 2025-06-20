@@ -1,7 +1,10 @@
-// file: ./renderChart.js
 import { chartData } from '../model/chartData.js';
 
-export function renderChart() {
+export function renderChart(chartData) {
+  if (!Array.isArray(chartData) || chartData.length === 0) {
+    console.warn('Chart data is empty or invalid');
+    return;
+  }
   const labels = chartData.map(item => item.hour);
   const datasets = [];
 

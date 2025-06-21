@@ -1,4 +1,3 @@
-import { setRandomBackgroundImage } from "../controller/getImageFetch.js";
 import { fetchCurrentWeather, weather } from "../controller/weatherFetch.js";
 import { cityNameFetch } from "../controller/cityNameFetch.js";
 import { renderResultPage } from "./renderResultPage.js";
@@ -113,7 +112,6 @@ export function renderIndexPage() {
       weatherData.chartData = chartData;
 
       // 4.3 Фон + рендер результатов
-      await setRandomBackgroundImage(cityInput, weather);
       renderResultPage(weatherData, cityInfo);
     } catch (error) {
       console.error("Error during fetching:", error);

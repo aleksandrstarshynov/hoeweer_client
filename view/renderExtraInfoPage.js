@@ -1,4 +1,3 @@
-import { backgroundImageUrl } from "../controller/getImageFetch.js";
 import { renderResultPage } from "./renderResultPage.js";
 import { renderIndexPage } from "./renderIndexPage.js";
 
@@ -10,7 +9,7 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
 
   document.body.innerHTML = '';
 
-  document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
+  document.body.style.backgroundImage = 'url("src/default-image.jpg")';
   document.body.style.backgroundSize = 'cover';
   document.body.style.backgroundRepeat = 'no-repeat';
   document.body.style.backgroundPosition = 'center';
@@ -38,8 +37,8 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   // weatherContainer.id = 'weatherContainer';
 
   const math = document.createElement('div');
-  math.id = 'navDiv';
-  math.textContent = 'MATH';
+  math.id = 'weatherContainer';
+  math.textContent = 'In this project, I used the entire JavaScript stack: on the server — Node.js with Express for request orchestration and fs/ESM modules for sliding data storage in JSON files, on the client — pure JS with dynamic import and Chart.js for visualization. As an interesting technical solution, I implemented a "sliding" data update: with each request, the "day after tomorrow" forecast is written to a file, then three files are shifted — this is how the history of "yesterday", "today" and "tomorrow" is supported — and only after that the final array for the chart is formed. This gave an easy alternative to Databases without external storage, with automatic data rolling. There is no justification for this choice, I just wanted to practice using the functionality of fs modules. The mathematics of the forecast is based on the analysis of temperature "drifts" between three horizons: the day before yesterday → yesterday and yesterday → today. For each hour, we calculate the directional difference (drift) between each neighboring forecast, average these two drifts, and get the value avgDrift. Our "proposed" temperature is calculated as the original forecast today plus this average drift. This way, we take into account the tendency of the forecast to shift over the previous two days and produce a smoother temperature, adapted to real dynamics.';
 
   // contentDiv.appendChild(weatherContainer);
   contentDiv.appendChild(math);

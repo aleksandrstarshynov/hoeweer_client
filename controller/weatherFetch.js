@@ -4,8 +4,7 @@ export let weather = null;
 export async function fetchCurrentWeather(latitude, longitude) {
 
 
-   const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m,precipitation,rain,snowfall,cloudcover,windspeed_10m,windgusts_10m,uv_index,surface_pressure,evapotranspiration,soil_temperature_0cm,soil_moisture_0_1cm,direct_radiation&timezone=Europe/Amsterdam`;
-   // const apiUrl = `https://`;   // FOR TESTING PERPOUSE
+  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m,precipitation,rain,snowfall,cloudcover,windspeed_10m,windgusts_10m,uv_index,surface_pressure,evapotranspiration,soil_temperature_0cm,soil_moisture_0_1cm,direct_radiation&timezone=Europe/Amsterdam`;
   try {
     const response = await fetch(apiUrl);
 

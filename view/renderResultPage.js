@@ -8,7 +8,7 @@ export function renderResultPage(weatherData, cityInfo) {
     return;
   }
 
-  // Сброс страницы и установка фонового изображения
+  // Reset page and set background image
   document.body.innerHTML = "";
   document.body.style.backgroundImage = 'url("src/default-image.jpg")';
   document.body.style.backgroundSize = "cover";
@@ -17,25 +17,24 @@ export function renderResultPage(weatherData, cityInfo) {
 
   const main = document.createElement("main");
 
-  // --- Header ---
+  // Header 
   const header = document.createElement("div");
   header.id = "header";
   const logo = document.createElement("div");
   logo.id = "logo";
-  logo.textContent = "Weather App NL";
+  logo.textContent = "Hoe is het weer? NL";
   header.appendChild(logo);
 
-  // --- Контент с фоном ---
-  const contentDiv = document.createElement("div");
+    const contentDiv = document.createElement("div");
   contentDiv.id = "content";
 
-  // Информация о городе
+  // Information about the city
   const cityInfoDiv = document.createElement("div");
   cityInfoDiv.id = "cityInfo";
-  cityInfoDiv.textContent = `City: ${cityInfo}`;
+  cityInfoDiv.textContent = `Stad: ${cityInfo}`;
   contentDiv.appendChild(cityInfoDiv);
 
-  // Текущая погода
+  // Current weather
   const weatherContainer = document.createElement("div");
   weatherContainer.id = "weatherContainer";
   const entries = [
@@ -55,7 +54,7 @@ export function renderResultPage(weatherData, cityInfo) {
   }
   contentDiv.appendChild(weatherContainer);
 
-  // График
+  // Chart
   const chartDiv = document.createElement("div");
   chartDiv.id = "chartDiv";
   const canvas = document.createElement("canvas");
@@ -63,18 +62,16 @@ export function renderResultPage(weatherData, cityInfo) {
   chartDiv.appendChild(canvas);
   contentDiv.appendChild(chartDiv);
 
-  // Собираем header и contentDiv
   main.appendChild(header);
   main.appendChild(contentDiv);
 
-  // --- Навигация (кнопки) ---
   const navDiv = document.createElement("div");
   navDiv.id = "navDiv";
 
   const newSearchButton = document.createElement("div");
   newSearchButton.classList.add("button");
   const newLink = document.createElement("a");
-  newLink.textContent = "New Search";
+  newLink.textContent = "Nieuwe zoekopdracht";
   newLink.href = "#";
   newSearchButton.appendChild(newLink);
   newSearchButton.addEventListener("click", (e) => {
@@ -85,7 +82,7 @@ export function renderResultPage(weatherData, cityInfo) {
   const extraPageButton = document.createElement("div");
   extraPageButton.classList.add("button");
   const extraLink = document.createElement("a");
-  extraLink.textContent = "More Info";
+  extraLink.textContent = "Meer informatie";
   extraLink.href = "#";
   extraPageButton.appendChild(extraLink);
   extraPageButton.addEventListener("click", (e) => {
@@ -99,7 +96,7 @@ export function renderResultPage(weatherData, cityInfo) {
   main.appendChild(navDiv);
   document.body.appendChild(main);
 
-  // Рендерим график
+  // Rendering the chart
   if (
     weatherData.chartData &&
     Array.isArray(weatherData.chartData) &&

@@ -19,7 +19,7 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   const header = document.createElement('div');
   header.id = 'header';
   const logo = document.createElement('div');
-  logo.textContent = 'Weather App NL';
+  logo.textContent = 'Hoe is het weer? NL';
   logo.id = 'logo';
   const title = document.createElement('div');
   title.textContent = 'Extra Info';
@@ -29,16 +29,13 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   contentDiv.id = 'content';
 
   const cityInfoDiv = document.createElement('div');
-  cityInfoDiv.textContent = `City: ${cityInfo}`;
+  cityInfoDiv.textContent = `Stad: ${cityInfo}`;
   cityInfoDiv.id = 'cityInfo';
   contentDiv.appendChild(cityInfoDiv);
 
-  // const weatherContainer = document.createElement('div');
-  // weatherContainer.id = 'weatherContainer';
-
   const math = document.createElement('div');
   math.id = 'weatherContainer';
-  math.textContent = 'In this project, I used the entire JavaScript stack: on the server — Node.js with Express for request orchestration and fs/ESM modules for sliding data storage in JSON files, on the client — pure JS with dynamic import and Chart.js for visualization. As an interesting technical solution, I implemented a "sliding" data update: with each request, the "day after tomorrow" forecast is written to a file, then three files are shifted — this is how the history of "yesterday", "today" and "tomorrow" is supported — and only after that the final array for the chart is formed. This gave an easy alternative to Databases without external storage, with automatic data rolling. There is no justification for this choice, I just wanted to practice using the functionality of fs modules. The mathematics of the forecast is based on the analysis of temperature "drifts" between three horizons: the day before yesterday → yesterday and yesterday → today. For each hour, we calculate the directional difference (drift) between each neighboring forecast, average these two drifts, and get the value avgDrift. Our "proposed" temperature is calculated as the original forecast today plus this average drift. This way, we take into account the tendency of the forecast to shift over the previous two days and produce a smoother temperature, adapted to real dynamics.';
+  math.textContent = 'In dit project heb ik de volledige JavaScript-stack gebruikt: op de server – Node.js met Express voor de orkestratie van aanvragen en fs/ESM-modules voor het opslaan van verschuivende gegevens in JSON-bestanden, op de client – ​​pure JS met dynamische import en Chart.js voor visualisatie. Als interessante technische oplossing heb ik een "schuivende" gegevensupdate geïmplementeerd: bij elke aanvraag wordt de voorspelling voor overmorgen naar een bestand geschreven, vervolgens worden drie bestanden verschoven – zo wordt de geschiedenis van "gisteren", "vandaag" en "morgen" ondersteund – en pas daarna wordt de definitieve array voor de grafiek samengesteld. Dit bood een eenvoudig alternatief voor databases zonder externe opslag, met automatische gegevensrolling. Er is geen rechtvaardiging voor deze keuze, ik wilde gewoon oefenen met de functionaliteit van fs-modules. De wiskunde van de voorspelling is gebaseerd op de analyse van temperatuurverschillen tussen drie horizonnen: eergisteren → gisteren en gisteren → vandaag. Voor elk uur berekenen we het richtingsverschil (drift) tussen de aangrenzende voorspellingen, middelen we deze twee driften en krijgen we de waarde avgDrift. Onze "voorgestelde" temperatuur wordt berekend als de oorspronkelijke voorspelling van vandaag plus deze gemiddelde drift. Op deze manier houden we rekening met de neiging van de voorspelling om te verschuiven in de afgelopen twee dagen en produceren we een gelijkmatigere temperatuur, aangepast aan de werkelijke dynamiek.';
 
   // contentDiv.appendChild(weatherContainer);
   contentDiv.appendChild(math);
@@ -49,7 +46,7 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   const backButton = document.createElement('div');
   backButton.classList.add('button');
   const backLink = document.createElement('a');
-  backLink.textContent = 'Back';
+  backLink.textContent = 'Terug';
   backLink.href = '#';
   backButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -59,7 +56,7 @@ export function renderExtraInfoPage(weatherData, cityInfo) {
   const newSearchButton = document.createElement('div');
   newSearchButton.classList.add('button');
   const newSearchLink = document.createElement('a');
-  newSearchLink.textContent = 'New Search';
+  newSearchLink.textContent = 'Nieuwe zoekopdracht';
   newSearchLink.href = '#';
   newSearchButton.addEventListener('click', (event) => {
     event.preventDefault();

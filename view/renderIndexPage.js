@@ -10,17 +10,17 @@ export let cityInfo = null;
 let weatherData = null;
 
 export function renderIndexPage() {
-  // 1. Очистка страницы
+  // 1. Clearing the page
   document.body.innerHTML = "";
   currentCity = "";
 
-  // 2. Фон по умолчанию
+  // 2. Default background
   document.body.style.backgroundImage = 'url("src/default-image.jpg")';
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundPosition = "center";
 
-  // 3. Основная разметка
+  // 3. Basic markup
   const main = document.createElement("main");
 
   // 3.1 Header
@@ -28,24 +28,24 @@ export function renderIndexPage() {
   header.id = "header";
   const logo = document.createElement("div");
   logo.id = "logo";
-  logo.textContent = "Weather App NL";
+  logo.textContent = "Hoe is het weer? NL";
   header.appendChild(logo);
 
-  // 3.2 Контентный блок
+  // 3.2 Content block
   const contentDiv = document.createElement("div");
   contentDiv.id = "content-transparent";
 
-  // 3.2.1 Введение
+  // 3.2.1 Introduction
   const introduction = document.createElement("div");
   introduction.id = "introduction";
   introduction.textContent =
-    "It is so easy to find the weather. Tens of applications provide us with forecasts. But is it possible to find the correct one? Especially in the Netherlands, where knowing what to expect makes great sense. With this project, I’ve found a way to know the expected temperature. Yes, the first version works only with degrees, not the rain. I hope that when I have free time and enough energy, I will finish the functionality for rain prediction.";
+    "Het is zo makkelijk om het weer te vinden. Tientallen apps geven ons voorspellingen. Maar is het mogelijk om de juiste te vinden? Zeker in Nederland, waar het heel handig is om te weten wat je kunt verwachten. Met dit project heb ik een manier gevonden om de verwachte temperatuur te weten. Ja, de eerste versie werkt alleen met graden, niet met regen. Ik hoop dat ik, als ik voldoende tijd en energie heb, de functionaliteit voor regenvoorspelling afrond.";
 
-  // 3.2.2 Описание автора
+  // 3.2.2 Author's description
   const description = document.createElement("div");
   description.id = "about";
   description.innerHTML = `
-    My name is Oleksandr Starshynov, and I am a full-stack developer with JavaScript as my second native language. Nice to meet you here. More information about me you can find here:
+    Mijn naam is Oleksandr Starshynov en ik ben een full-stack developer met JavaScript als tweede moedertaal. Leuk je hier te ontmoeten. Meer informatie over mij vind je hier:
     <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>,
     <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>,
     <a href="mailto:YOUR_EMAIL@example.com" target="_blank">Email</a>.
@@ -54,7 +54,7 @@ export function renderIndexPage() {
   contentDiv.appendChild(introduction);
   contentDiv.appendChild(description);
 
-  // 3.3 Навигационный блок: ввод города + кнопка
+  // 3.3 Navigation block: city input + button
   const navDiv = document.createElement("div");
   navDiv.id = "navDiv";
 
@@ -63,25 +63,24 @@ export function renderIndexPage() {
   input.placeholder = "Enter city name";
   input.id = "cityInput";
 
-  // Обязательно объявляем кнопку до того, как вешать на неё слушатель
   const findButton = document.createElement("div");
   findButton.classList.add("button");
   const link = document.createElement("a");
-  link.textContent = "Find";
+  link.textContent = "Vinden";
   link.href = "#";
   findButton.appendChild(link);
 
-  // 4. Обработчик клика
+  // 4. Click handler
   findButton.addEventListener("click", async (event) => {
     event.preventDefault();
     const cityInput = input.value.trim();
     if (!cityInput) {
-      showErrorMessage("Please enter a city name.");
+      showErrorMessage("Voer een stadsnaam in.");
       return;
     }
 
     try {
-      // Получаем координаты и информацию о городе
+      // Receiving coordinates and information about the city
       const {
         latitude,
         longitude,
@@ -94,14 +93,14 @@ export function renderIndexPage() {
       }
       cityInfo = fetchedCityInfo;
 
-      // 4.1 Open-Meteo: текущая погода
+      // 4.1 Current weather by Open-Meteo
       weatherData = await fetchCurrentWeather(latitude, longitude);
       if (!weatherData) {
         showErrorMessage("No weather data found.");
         return;
       }
 
-      // 4.2 Бэкенд: расчётные данные для графика
+      // 4.2 Backend: Calculated data for the chart
       const chartRes = await fetch(
         `${API_BASE_URL}/chart-data?lat=${latitude}&lon=${longitude}`
       );
@@ -111,7 +110,7 @@ export function renderIndexPage() {
       const chartData = await chartRes.json();
       weatherData.chartData = chartData;
 
-      // 4.3 Фон + рендер результатов
+      // 4.3 render results
       renderResultPage(weatherData, cityInfo);
     } catch (error) {
       console.error("Error during fetching:", error);
@@ -119,7 +118,7 @@ export function renderIndexPage() {
     }
   });
 
-  // 5. Собираем всё вместе
+  // 5. Putting it all together
   navDiv.appendChild(input);
   navDiv.appendChild(findButton);
 

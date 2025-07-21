@@ -23,13 +23,9 @@ Sometimes for unexpected some reasome server is slipping, even if I have uptime 
 
 ## Installation & Running Locally
 ```
-
-cd quickshop
-
+cd hoeweer_client
 # Frontend
-cd my-app
-npm install
-npm start
+run index.html with Live server
 ```
 Service will run locally on port 3000.<br>
 

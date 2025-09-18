@@ -1,6 +1,9 @@
 # Hoeweer (Hoe weer is het?)
 **Weather forecast** accuracy assessment service: set up collection and aggregation of data from three providers, automated calculation of average error, which allowed to increase the accuracy of temperature forecasts.
 
+For access to the repository sent a request to aleksandrstarshynov@gmail.com
+
+
 ## Technologies
 
 ### Languages, Frameworks & Libraries
